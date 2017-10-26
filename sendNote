@@ -1,0 +1,87 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+#
+# author: Thorben Casper
+# created on: 2017/08/14
+
+
+#import sys
+#from PyQt5 import QtWidgets,QtGui
+#from PyQt5.QtWidgets import QSystemTrayIcon,QApplication
+#
+#class SystemTrayIcon(QSystemTrayIcon):
+#    def __init__(self, icon, parent=None):
+#        super(SystemTrayIcon,self).__init__(icon,parent)
+#        if self.isSystemTrayAvailable():
+#            print('system tray is available')
+#        if not self.supportsMessages():
+#            print('system messages are supported')
+#        print('attempting to send system message')
+#        self.show()
+#        self.showMessage('hello world','this is the first messsage')
+
+
+# the following requires Ubuntu package python-notify (only for Python2, not working with anaconda)
+#import sys                                                  # only with anaconda
+#sys.path.append('/usr/lib/python2.7/dist-packages/gtk-2.0') # only with anaconda
+#sys.path.append('/usr/lib/python2.7/dist-packages/')        # only with anaconda
+#import pynotify
+#
+#def sendmessage(title, message):
+#    pynotify.init("Test")
+#    notice = pynotify.Notification(title, message)
+#    notice.show()
+#    return
+
+
+# the following requires pip package py-notify (current version 0.3.1). However, package seems badly documented and it could not be figured out how simple notifications can be send
+#import notify
+
+
+# the following requires pip package notify2 (current version 0.3.1). 
+# to install dbus properly on Ubuntu 16.04: install Ubuntu packages libdbus-1-dev and libdbus-glib-1-dev. Then, run 'pip install dbus-python'
+#import notify2
+#
+#def sendmessage(title, message):
+#    notify2.init("Test")
+#    notice = notify2.Notification(title, message)
+#    notice.show()
+#    return
+
+# the following requires conda package pyinotify (TODO)
+# => seems to be more for filesystem monitoring and thus overkill for simple notifications
+
+
+# the following requires linux program notify-send and is therefore not compatible with non-Linux systems
+import subprocess
+import os
+
+def sendmessage(title,message):
+#    os.system("echo $DBUS_SESSION_BUS_ADDRESS > test.log")
+#    os.system("echo $DISPLAY >> test.log")
+#    os.system("eval \"export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)\"")
+#    os.environ["DBUS_SESSION_BUS_ADDRESS"] = "hello"
+#    os.environ["DISPLAY"] = ":1"
+#    os.system("export DBUS_SESSION_BUS_ADDRESS=hello && echo $DBUS_SESSION_BUS_ADDRESS > test1.log && notify-send hello")
+#    os.system("echo $DBUS_SESSION_BUS_ADDRESS > test1.log")
+#    os.system("echo $DISPLAY >> test1.log")
+    os.system("notify-send hello world")
+    print('hello world')
+#    subprocess.Popen(['eval','"export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)"']);
+#    subprocess.Popen(['mkdir','createdBySendNote'])
+#    subprocess.Popen(['/usr/bin/notify-send', message])
+    return
+
+
+if __name__ == "__main__":
+#	sendmessage('hello world. This message was created by Thorben Casper.')
+	sendmessage('title','<b>bold</b>, <i>italic</i>, <u>underline</u> and even <a href="http://google.com">links</a> are supported in pynotify, but not the others!')
+
+#    # using Qt5
+#    app = QApplication(sys.argv)
+#    SystemTrayIcon(QtGui.QIcon('test.ico'))
+#    sys.exit( app.exec_())
+
+# propositions for windows:
+# - growl
+# - snarl

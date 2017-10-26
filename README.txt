@@ -1,0 +1,35 @@
+--- Linux ---
+
+1. Using the ntfy package (https://pypi.python.org/pypi/ntfy) that can be installed from PyPI using pip/pip3. It is a program that runs directly on the command line. Only tested with Python 2.7.13 on Ubuntu 16.04.
+
+--- Windows ---
+
+1. windows_popup.py by K-DawG007 (https://github.com/K-DawG007/Stack-Watch/blob/master/windows_popup.py#L6), originally balloontip.py by wontoncc (https://gist.github.com/wontoncc/1808234), but the latter had issues with a second notification being called in the same run of the program
+- to install win32core, just use pip/pip3.
+- to install win32gui, see iChux' answer in https://stackoverflow.com/questions/20113456/installing-win32gui-python-module
+	-> make sure to get the correct wheel, cp36 means Cpython 3.6, check with your Python version (see also https://stackoverflow.com/questions/28568070/filename-whl-is-not-supported-wheel-on-this-platform)
+- make sure to also call the balloon_tip function at some point
+- using Python 3.6.3 and also with Python 2.7.14 under Windows 7x86, it works
+
+2. For Windows10: Windows 10 Toast Notifications, see https://github.com/jithurjacob/Windows-10-Toast-Notifications
+- pip install win10toast
+- tested with Python 3.6.3 under Windows 7x86, but received failure "cannot import name 'ToastNotifier'", no solution found
+
+3. Using PyQt5: https://www.quora.com/How-can-I-send-desktop-notifications-on-Windows-with-Python gives an answer by Bharadwaj Raju, but it does not work in a Virtual Machine. Missing OpenGL is the problem with VirtualBox.
+
+4. Using Plyer as suggested by https://stackoverflow.com/a/42085439
+- do not just use standard pip/pip3 install to install from PyPI. You will get this error on Windows: "__init__() got an unexpected keyword argument 'ticker'". This is because the version on PyPI is not the latest version.
+- instead, follow KeyWeeUsr's answer on https://github.com/kivy/plyer/issues/333 and do pip/pip3 install -I https://github.com/kivy/plyer/zipball/master
+
+5. Using the ntfy package (https://pypi.python.org/pypi/ntfy) that can be installed from PyPI using pip/pip3. It is a program that runs directly on the command line. On Windows 7x86, the installation only worked for Python 2.7.14 using pip and not for Python 3.6.3 using pip3 (there is an error with the usage of the print function -> Python2/3 incompatibility)
+
+6. notify2 (https://pypi.python.org/pypi/notify2) installed using pip/pip3. However, after trying to import notify2 using Python 2.7.14 or 3.6.3, failure "no module called dbus" is returned.
+
+--- Mac OS ---
+
+...
+
+useful sources:
+
+https://stackoverflow.com/questions/2240674/cross-platform-desktop-notifier-in-python
+https://pythonhosted.org/an_example_pypi_project/setuptools.html
