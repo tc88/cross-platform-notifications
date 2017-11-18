@@ -2,6 +2,10 @@
 
 1. Using the ntfy package (https://pypi.python.org/pypi/ntfy) that can be installed from PyPI using pip/pip3. It is a program that runs directly on the command line. Only tested with Python 2.7.13 on Ubuntu 16.04.
 
+2. Usage of os.system together with Linux-Tool notify-send. This also works with a cronjob.
+
+3. PyQt works but gives you Qt overhead
+
 --- Windows ---
 
 1. windows_popup.py by K-DawG007 (https://github.com/K-DawG007/Stack-Watch/blob/master/windows_popup.py#L6), originally balloontip.py by wontoncc (https://gist.github.com/wontoncc/1808234), but the latter had issues with a second notification being called in the same run of the program
